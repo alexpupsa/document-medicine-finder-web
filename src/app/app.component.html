@@ -1,23 +1,55 @@
 <div class="text-center">
-  <div class="margin-top-50">
+  <div class="margin-top-big">
     <span>{{fileName}}</span>
   </div>
-  <div class="margin-top-10">
+  <div class="margin-top-small">
     <input #pdfInput hidden="true" type="file" onclick="this.value=null" (change)="onFileSelected($event)"
       accept=".pdf" />
     <button mat-flat-button color="primary" (click)="pdfInput.click()">Choose PDF</button>
   </div>
 
-  <div class="margin-top-50">
-    <mat-spinner *ngIf="isLoading" style="margin:0 auto;"></mat-spinner>
-    <div *ngIf="!isLoading && response">
-      <mat-list *ngFor="let item of response.results">
-        <mat-list-item><span>{{item}}</span></mat-list-item>
-      </mat-list>
-    </div>
-    <div *ngIf="!isLoading && errorResponse">
-      {{errorResponse}}
-    </div>
+  <div *ngIf="response.length > 0" class="margin-top-big margin-left-right-small">
+    <table mat-table [dataSource]="response" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element"><b>{{element.name}}</b></td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="genericName">
+        <th mat-header-cell *matHeaderCellDef>Generic Name</th>
+        <td mat-cell *matCellDef="let element">{{element.genericName}}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="brandName">
+        <th mat-header-cell *matHeaderCellDef>Brand Name</th>
+        <td mat-cell *matCellDef="let element">{{element.brandName}}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="manufacturer">
+        <th mat-header-cell *matHeaderCellDef>Manufacturer</th>
+        <td mat-cell *matCellDef="let element">{{element.manufacturer}}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="pharmClass">
+        <th mat-header-cell *matHeaderCellDef>Class</th>
+        <td mat-cell *matCellDef="let element">{{element.pharmClass}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
   </div>
 
+  <div class="margin-top-small">
+    <mat-spinner *ngIf="isLoading" style="margin:0 auto;"></mat-spinner>
+  </div>
 </div>

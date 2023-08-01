@@ -1,11 +1,20 @@
-.margin-top-50 {
+.margin-top-big {
   margin-top: 50px;
 }
 
-.margin-top-10 {
+.margin-top-small {
   margin-top: 10px;
+}
+
+.margin-left-right-small {
+  margin-left: 22px;
+  margin-right: 22px;
 }
 
 .text-center {
   text-align: center;
+}
+
+table {
+  width: 88%;
 }
