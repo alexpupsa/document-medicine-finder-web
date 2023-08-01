@@ -9,7 +9,7 @@ import { ApiReponse } from 'src/model/apiResponse';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'PDF Meds Analyzer';
+  title = 'document-medicine-finder-web';
 
   fileName = '';
   isLoading = false;
