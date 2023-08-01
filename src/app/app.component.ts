@@ -39,7 +39,7 @@ export class AppComponent {
           this.isLoading = false;
         },
         error: (e) => {
-          this.errorResponse = e.error;
+          this.errorResponse = "Error processing PDF";
           this.isLoading = false;
         }
       })
