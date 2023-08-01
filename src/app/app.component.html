@@ -8,6 +8,10 @@
     <button mat-flat-button color="primary" (click)="pdfInput.click()">Choose PDF</button>
   </div>
 
+  <div class="margin-top-small">
+    <mat-spinner *ngIf="isLoading" style="margin:0 auto;"></mat-spinner>
+  </div>
+
   <div *ngIf="response.length > 0" class="margin-top-big margin-left-right-small">
     <table mat-table [dataSource]="response" class="mat-elevation-z8">
 
@@ -47,9 +51,5 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-  </div>
-
-  <div class="margin-top-small">
-    <mat-spinner *ngIf="isLoading" style="margin:0 auto;"></mat-spinner>
   </div>
 </div>
