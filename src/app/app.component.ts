@@ -39,7 +39,7 @@ export class AppComponent {
 
       analyzeRequest.subscribe({
         next: (data: ApiReponse) => {
-          this.response = data.results.map(x => new Medicine(x, '', '', '', ''));
+          this.response = data.results.map(x => new Medicine(x));
           this.isLoading = false;
           this.updateDescription();
         },
@@ -47,7 +47,7 @@ export class AppComponent {
           this.errorResponse = "Error processing PDF";
           this.isLoading = false;
         }
-      })
+      });
     }
   }
 
