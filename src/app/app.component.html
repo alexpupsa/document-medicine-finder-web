@@ -12,6 +12,10 @@
     <mat-spinner *ngIf="isLoading" style="margin:0 auto;"></mat-spinner>
   </div>
 
+  <div *ngIf="isEmptyResponse" class="margin-top-big">
+    No results found!
+  </div>
+
   <div *ngIf="response.length > 0" class="margin-top-big margin-left-right-small">
     <table mat-table [dataSource]="response" class="mat-elevation-z8">
 

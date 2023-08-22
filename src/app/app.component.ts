@@ -17,6 +17,7 @@ export class AppComponent {
   isLoading = false;
   response: Medicine[] = [];
   errorResponse = '';
+  isEmptyResponse = false;
 
   displayedColumns: string[] = ['name', 'genericName', 'brandName', 'manufacturer', 'pharmClass'];
 
@@ -29,6 +30,7 @@ export class AppComponent {
     if (file) {
 
       this.isLoading = true;
+      this.isEmptyResponse = false;
       this.errorResponse = '';
 
       this.fileName = file.name;
@@ -39,9 +41,13 @@ export class AppComponent {
 
       analyzeRequest.subscribe({
         next: (data: ApiReponse) => {
-          this.response = data.results.map(x => new Medicine(x));
+          if (data.results.length > 0) {
+            this.response = data.results.map(x => new Medicine(x));
+            this.updateDescription();
+          } else {
+            this.isEmptyResponse = true;
+          }
           this.isLoading = false;
-          this.updateDescription();
         },
         error: (e) => {
           this.errorResponse = "Error processing PDF";
