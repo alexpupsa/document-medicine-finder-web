@@ -45,6 +45,7 @@ export class AppComponent {
             this.response = data.results.map(x => new Medicine(x));
             this.updateDescription();
           } else {
+            this.response = [];
             this.isEmptyResponse = true;
           }
           this.isLoading = false;
