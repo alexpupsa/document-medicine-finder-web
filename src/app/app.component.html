@@ -3,9 +3,16 @@
     <span>{{fileName}}</span>
   </div>
   <div class="margin-top-small">
-    <input #pdfInput hidden="true" type="file" onclick="this.value=null" (change)="onFileSelected($event)"
-      accept=".pdf" />
-    <button mat-flat-button color="primary" (click)="pdfInput.click()">Choose PDF</button>
+    <div class="dropzone" fileDragDrop (filesChangeEmiter)="onFileSelected($event)">
+      <div class="text-wrapper">
+        <input #pdfInput hidden="true" type="file" [multiple]="false" onclick="this.value=null"
+          (change)="onFileSelected($event)" accept=".pdf" />
+        <button mat-flat-button color="primary" (click)="pdfInput.click()">Choose PDF</button>
+        <div class="margin-top-small">
+          Or drag and drop PDF here
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="margin-top-small">

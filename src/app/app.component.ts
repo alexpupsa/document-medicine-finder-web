@@ -25,7 +25,12 @@ export class AppComponent {
 
   onFileSelected(event: any) {
 
-    const file: File = event.target.files[0];
+    let file: File;
+    if (event.target) {
+      file = event.target.files[0];
+    } else {
+      file = event;
+    }
 
     if (file) {
 

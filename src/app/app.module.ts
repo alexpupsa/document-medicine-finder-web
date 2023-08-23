@@ -9,10 +9,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
+import { FileDragNDropDirective } from 'src/directives/file-drag-n-drop.directive';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FileDragNDropDirective],
   imports: [
     BrowserModule,
     CommonModule,
