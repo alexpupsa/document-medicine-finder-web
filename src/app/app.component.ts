@@ -42,7 +42,7 @@ export class AppComponent {
       const formData = new FormData();
 
       formData.append("file", file);
-      const analyzeRequest = this.http.post<ApiReponse>(`${environment.apiUrl}/MedAnalyzer`, formData);
+      const analyzeRequest = this.http.post<ApiReponse>(environment.apiUrl, formData);
 
       analyzeRequest.subscribe({
         next: (data: ApiReponse) => {
